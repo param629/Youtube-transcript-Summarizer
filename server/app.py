@@ -139,6 +139,6 @@ def GetTranscript(video_url):
       # print('The text is: ', text)
       return [{"start":StringTime(0), "end":StringTime(0), "text": str(e)}]
       
-# server the app when this file is run
+# server the app when this file runs
 if __name__ == '__main__': 
   app.run()
