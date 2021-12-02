@@ -11,14 +11,6 @@ The project is divided in two separate entities:
 
 The above structure is taken owing to implementation of Restful services.
 
-### Installation:
-1. Clone the repo.
-2. Go in the server folder and create, activate a virtual environment and install the requirements
-   with pip or pip3 install -r requirements.txt .If you can manage installing torch, else
-3. Everything is done, run the app now. You can acess the website using the url provided above(change http to https in front of the url).
-4. Also change the server link in [popup.js](/client/popup.js) file in get request to API.5. Next load the chrome extension folder [client](/client) unpacked from [chrome://extensions/](chrome://extensions/).
-   Go to [youtube](https://youtube.com/) and open a video and click on summarize and see the summary.
-5. connect to ngrok each time app is run a new time.
 
 ### Server:
 It is a simple flask app, which has a API /api/summarize?youtube_video='url' which can be used to get the summary of a
@@ -36,7 +28,7 @@ for which if the video has already transcript then it is used with the help of a
 library *youtube-transcript-api* ,otherwise first the audio is taken and speech to text transformation is done.
 Again useful python libraries for used for this.
 
-After this, the summary can be generated using the transformers. As described here [Useful Blog](https://www.thepythoncode.com/article/text-summarization-using-huggingface-transformers-python), there are two ways to do this
+After this, the summary can be generated using the transformers, there are two ways to do this
 1. Extractive summarization
 2. Abstractive summarization
 
@@ -56,11 +48,6 @@ To server the request over HTTPS (as the youtube is a https website and generati
 
 Also, the CORS needed to be added as again if the HTTP request is headless then it would be blocked due to *CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.* So, CORS is simply allowed for all domains on all routes using the *flask_cors* library.
 
-### Chrome-Extension
-On clicking the summarize button on the popup, if the url is of form *https://www.youtube.com/watch?v=** the popup js makes a GET request to our *Server API* .A div element is added below the youtube player with a preload text.
-Then, after the text is received, it is passed to the content js which then changes the content inside the above div element. Most of the properties are inherited from parent element, so that it fits perfectly there. Extra styling are added in [content.css](/client/content.css) <br>
-It can be used by loading unpacked from [chrome://extensions/](chrome://extensions/).
-
 ### Improvements:
 1. Presently, only basic setup is done. Exception handling is left, if the url is not correct. 
    This would not happen when using chrome extension but if used independently then it can occur.
@@ -73,5 +60,3 @@ It can be used by loading unpacked from [chrome://extensions/](chrome://extensio
    to audio . 
 5. The summary of some 10-15 minutes as time stamps can be given, then a person can also search for a keyword, when it
    is discussed and can go directly to that time .
-
-![](images/updated-design.png)
