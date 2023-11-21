@@ -41,10 +41,5 @@ The summary is then given back as a HTTP response after one gives a GET HTTP req
 To server the request over HTTPS (as the youtube is a https website and generating a HTTP request to a http website will give a mixed content error), the app needs be to run on https rather than http, for this there can be two solutions -
 
 1. A easy option is to use pyngrok (a wrapper library for ngrok), which allows to expose local host on a public url.
-   It even gives https and http options for the url, so fulfills our purpose. This even allows to run the app on 
-   environments like google colab where *localhost* won't be acessible. So, this is good for testing purposes.
-   The colab notebook used for testing is added in server folder.
 2. Another hard option is to deploy it on a host which will give the required https url and certificates.
-
-Also, the CORS needed to be added as again if the HTTP request is headless then it would be blocked due to *CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.* So, CORS is simply allowed for all domains on all routes using the *flask_cors* library.
 
